@@ -4,7 +4,9 @@ const nodemailer = require('nodemailer');
 const path = require('path'); // Import path module
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
 // Middleware
 app.use(bodyParser.json());
@@ -39,3 +41,5 @@ app.listen(PORT, () => {
 
 // Serve static files (like CSS, images, etc.) from the project folder
 app.use(express.static(path.join(__dirname)));
+
+
